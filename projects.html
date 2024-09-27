@@ -5,32 +5,103 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        /* Custom styles for the Projects grid */
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .projects-container h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .projects-container p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+
+        .project-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .project-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .project-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
+
     <div id="wrapper">
         <div id="main">
-
-            <!-- Projects Section -->
             <header id="header">
                 <h1>My Projects</h1>
-                <p>Here are some of the projects I've worked on...</p>
+                <p>I like to pursue ideas based on frequent challenges faced by me and my peers.</p>
             </header>
 
-            <!-- Add your project details here -->
-            <section id="projects">
-                <ul>
-                    <li>Project 1: Description</li>
-                    <li>Project 2: Description</li>
-                    <li>Project 3: Description</li>
-                </ul>
-            </section>
+            <div class="projects-container">
+                <h2>PROJECTS</h2>
+                <p>I like to pursue ideas based on frequent challenges faced by me and my peers.</p>
 
-            <!-- Footer -->
+                <div class="grid">
+                    <div class="project-item">
+                        <img src="path-to-your-image/devweeknyc.jpg" alt="Dev Week NYC">
+                        <div class="overlay">Dev Week NYC</div>
+                    </div>
+                    <div class="project-item">
+                        <img src="path-to-your-image/reserveparks.jpg" alt="Reserve Parks">
+                        <div class="overlay">Reserve Parks</div>
+                    </div>
+                    <div class="project-item">
+                        <img src="path-to-your-image/nycopendata.jpg" alt="NYC Open Data">
+                        <div class="overlay">NYC Open Data</div>
+                    </div>
+                    <div class="project-item">
+                        <img src="path-to-your-image/jpmorgan.jpg" alt="JP Morgan">
+                        <div class="overlay">JP Morgan</div>
+                    </div>
+                    <div class="project-item">
+                        <img src="path-to-your-image/forcastfit.jpg" alt="Forcast Fit">
+                        <div class="overlay">Forcast Fit</div>
+                    </div>
+                    <div class="project-item">
+                        <img src="path-to-your-image/tedtalks.jpg" alt="Ted Talks">
+                        <div class="overlay">Ted Talks</div>
+                    </div>
+                </div>
+            </div>
+
             <footer id="footer">
                 <p>&copy; Dzinh Pham. All rights reserved.</p>
             </footer>
         </div>
     </div>
+
 </body>
 </html>
