@@ -16,11 +16,12 @@
         .projects-container h2 {
             font-size: 36px;
             margin-bottom: 10px;
+            color: black; /* Set the title text to black */
         }
 
         .projects-container p {
             font-size: 18px;
-            color: #555;
+            color: black; /* Set the paragraph text to black */
             margin-bottom: 40px;
         }
 
@@ -48,11 +49,27 @@
             left: 0;
             right: 0;
             background: rgba(0, 0, 0, 0.5);
-            color: #00ccff;
+            color: black; /* Set the overlay text to black */
             padding: 20px;
             text-align: center;
             font-size: 18px;
             font-weight: bold;
+        }
+
+        /* Black Back to Home Button */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: black; /* Set button background to black */
+            color: white; /* Text color white for contrast */
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #333; /* Darker hover effect */
         }
     </style>
 </head>
@@ -61,8 +78,8 @@
     <div id="wrapper">
         <div id="main">
             <header id="header">
-                <h1>My Projects</h1>
-                <p>I like to pursue ideas based on frequent challenges faced by me and my peers.</p>
+                <h1 style="color:black;">My Projects</h1> <!-- Set header text to black -->
+                <p style="color:black;">I like to pursue ideas based on frequent challenges faced by me and my peers.</p>
             </header>
 
             <div class="projects-container">
@@ -94,6 +111,11 @@
                         <img src="path-to-your-image/tedtalks.jpg" alt="Ted Talks">
                         <div class="overlay">Ted Talks</div>
                     </div>
+                </div>
+
+                <!-- Black Back to Home Button -->
+                <div class="button-container">
+                    <a href="index.html" class="button">Back to Home</a>
                 </div>
             </div>
 
