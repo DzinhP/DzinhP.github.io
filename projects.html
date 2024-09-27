@@ -16,12 +16,12 @@
         .projects-container h2 {
             font-size: 36px;
             margin-bottom: 10px;
-            color: black; /* Set the title text to black */
+            color: black;
         }
 
         .projects-container p {
             font-size: 18px;
-            color: black; /* Set the paragraph text to black */
+            color: black;
             margin-bottom: 40px;
         }
 
@@ -49,7 +49,7 @@
             left: 0;
             right: 0;
             background: rgba(0, 0, 0, 0.5);
-            color: black; /* Set the overlay text to black */
+            color: black;
             padding: 20px;
             text-align: center;
             font-size: 18px;
@@ -59,17 +59,25 @@
         /* Black Back to Home Button */
         .button {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: black; /* Set button background to black */
-            color: white; /* Text color white for contrast */
+            padding: 15px 30px;
+            background-color: black;
+            color: white;
             border-radius: 5px;
             text-decoration: none;
-            font-size: 16px;
-            margin-top: 20px;
+            font-size: 18px;
+            margin-top: 40px;
         }
 
         .button:hover {
-            background-color: #333; /* Darker hover effect */
+            background-color: #333;
+        }
+
+        /* Button Container with Padding and Contrast */
+        .button-container {
+            background-color: #f4f4f4; /* Light background for contrast */
+            padding: 20px;
+            margin-top: 40px; /* Added space above the button */
+            text-align: center; /* Centering the button */
         }
     </style>
 </head>
@@ -78,7 +86,7 @@
     <div id="wrapper">
         <div id="main">
             <header id="header">
-                <h1 style="color:black;">My Projects</h1> <!-- Set header text to black -->
+                <h1 style="color:black;">My Projects</h1>
                 <p style="color:black;">I like to pursue ideas based on frequent challenges faced by me and my peers.</p>
             </header>
 
@@ -113,7 +121,7 @@
                     </div>
                 </div>
 
-                <!-- Black Back to Home Button -->
+                <!-- Back to Home Button with Contrast Background -->
                 <div class="button-container">
                     <a href="index.html" class="button">Back to Home</a>
                 </div>
