@@ -9,10 +9,10 @@
     <link rel="icon" href="../favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../basecamp.css">
-    <link rel="stylesheet" href="climb.css">
+    <link rel="stylesheet" href="climb.css?v=4">
     <script src="../script.js" defer></script>
-    <script src="climb-logic.js" defer></script>
-    <script src="climb.js" defer></script>
+    <script src="climb-logic.js?v=4" defer></script>
+    <script src="climb.js?v=4" defer></script>
   </head>
   <body class="climbing-page">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -45,12 +45,16 @@
           <p class="eyebrow">A little break at the wall</p>
           <h1 id="climbing-heading">One more <em>move.</em></h1>
         </div>
-        <p>Six moves. A little route reading. A very small summit.<br>Take your time — the next hold will wait.</p>
+        <p>A fresh route. A finite grip.<br>Read the wall, save your strength, and earn the top out.</p>
       </section>
 
       <section class="climb-game" aria-labelledby="game-heading">
         <div class="climb-wall-panel">
-          <div class="climb-wall-topline"><span>BASECAMP BOULDERING CLUB</span><span aria-hidden="true">↗</span></div>
+          <div class="climb-wall-topline"><span>BASECAMP BOULDERING CLUB</span><span id="climb-route-code">↗</span></div>
+          <div class="climb-endurance" id="climb-endurance" hidden>
+            <div class="climb-endurance-label"><span>Endurance</span><strong id="climb-endurance-value">100%</strong><span id="climb-endurance-note">Fresh arms</span></div>
+            <div class="climb-endurance-track" id="climb-endurance-meter" role="meter" aria-label="Endurance" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span id="climb-endurance-fill"></span></div>
+          </div>
           <div class="climb-stage" id="climb-stage" tabindex="0" role="group" aria-label="Climbing wall" aria-describedby="climb-instructions" hidden>
             <div class="wall-facet wall-facet-one" aria-hidden="true"></div>
             <div class="wall-facet wall-facet-two" aria-hidden="true"></div>
@@ -71,47 +75,56 @@
               </svg>
             </div>
             <div class="climb-celebration" id="climb-celebration" aria-hidden="true"><span>✦</span><span>✧</span><span>✦</span><span>✧</span><span>✦</span></div>
+            <div class="climb-result" id="climb-result" hidden><p class="eyebrow" id="climb-result-kicker"></p><h3 id="climb-result-title"></h3><p id="climb-result-summary"></p></div>
           </div>
           <div class="climb-nojs" id="climb-nojs">
             <span aria-hidden="true">↗</span>
             <p>This little climbing wall needs JavaScript to play.</p>
             <p>In the meantime, <a href="../learning/">explore the learning routes</a> or <a href="../writing/">read a field note</a>.</p>
           </div>
-          <div class="climb-mat" aria-hidden="true"><span>SOFT LANDINGS. SMALL WINS.</span><span>ROUTE / 01</span></div>
+          <div class="climb-mat" aria-hidden="true"><span>SOFT LANDINGS. SMALL WINS.</span><span>READ. REST. SEND.</span></div>
           <div class="climb-board-toolbar" id="climb-board-toolbar" hidden>
-            <p id="climb-board-selection">Coral route · six moves</p>
-            <button type="button" class="climb-board-action" id="climb-board-action">Start the route <span aria-hidden="true">↗</span></button>
+            <div class="climb-board-readout"><p id="climb-board-selection">Read the coral route</p><strong id="climb-move-cost"></strong></div>
+            <p class="climb-status" id="climb-status" role="status" aria-live="polite" aria-atomic="true">Start with a full grip. Find the J holds to recover along the way.</p>
+            <div class="climb-board-buttons">
+              <button type="button" class="climb-board-action" id="climb-board-action">Start climbing <span aria-hidden="true">↗</span></button>
+              <button type="button" class="climb-rest" id="climb-rest" disabled>Rest +45</button>
+            </div>
           </div>
         </div>
 
         <div class="climb-console">
-          <p class="eyebrow climb-route-number">The coral route / 01</p>
+          <p class="eyebrow climb-route-number" id="climb-route-name">A new problem, every time</p>
           <h2 id="game-heading">Find your <em>flow.</em></h2>
-          <p class="climb-description">Follow the coral holds to the top. Pick a hold, then make your move. The mint holds belong to another route.</p>
+          <p class="climb-description">Follow coral to the top. Every move uses endurance; a good rest can save your climb. Pick a hold to see the cost before you commit.</p>
+          <ul class="climb-legend" aria-label="Hold types">
+            <li><span class="climb-legend-mark is-jug" aria-hidden="true">J</span><span><strong>Jug</strong> A place to rest · +45 once</span></li>
+            <li><span class="climb-legend-mark is-crimp" aria-hidden="true">C</span><span><strong>Crimp</strong> Small edge · tighter grip</span></li>
+            <li><span class="climb-legend-mark is-sloper" aria-hidden="true">S</span><span><strong>Sloper</strong> Round hold · more effort</span></li>
+          </ul>
           <div class="climb-progress" aria-label="Route progress">
-            <p><span id="climb-progress-label">0 of 6 moves</span><span id="climb-phase">At the start</span></p>
+            <p><span id="climb-progress-label">0% of the wall</span><span id="climb-phase">At the start</span></p>
             <div class="climb-progress-track" aria-hidden="true"><span id="climb-progress-fill"></span></div>
           </div>
-          <p class="climb-status" id="climb-status" role="status" aria-live="polite" aria-atomic="true">Ready when you are. Start the climb to choose your first hold.</p>
+          <dl class="climb-session-stats"><div><dt>Moves</dt><dd id="climb-stat-moves">0</dd></div><div><dt>Misses</dt><dd id="climb-stat-mistakes">0</dd></div><div><dt>Rests</dt><dd id="climb-stat-rests">0 / 2</dd></div></dl>
           <div class="climb-controls" id="climb-controls" hidden>
-            <button class="climb-start" id="climb-start" type="button">Start climbing <span aria-hidden="true">↗</span></button>
-            <div class="climb-play-controls" id="climb-play-controls" hidden>
-              <div class="climb-selection"><span>Next hold</span><strong id="climb-selection-label">Choose a hold on the wall</strong></div>
-              <div class="climb-pad" role="group" aria-label="Choose a hold in a direction">
-                <button type="button" data-direction="up" aria-label="Select hold above">↑</button>
-                <button type="button" data-direction="left" aria-label="Select hold to the left">←</button>
-                <button type="button" data-direction="down" aria-label="Select hold below">↓</button>
-                <button type="button" data-direction="right" aria-label="Select hold to the right">→</button>
-              </div>
-              <button class="climb-move" id="climb-move" type="button" disabled>Make the move <span aria-hidden="true">↗</span></button>
-              <button class="climb-reset" id="climb-reset" type="button">Start over <span aria-hidden="true">↺</span></button>
+            <div class="climb-route-actions">
+              <button class="climb-shuffle" id="climb-shuffle" type="button">Shuffle route <span aria-hidden="true">↻</span></button>
+              <button class="climb-reset" id="climb-reset" type="button">Retry this route <span aria-hidden="true">↺</span></button>
+            </div>
+            <div class="climb-pad" role="group" aria-label="Choose a hold in a direction">
+              <button type="button" data-direction="up" aria-label="Select hold above" disabled>↑</button>
+              <button type="button" data-direction="left" aria-label="Select hold to the left" disabled>←</button>
+              <button type="button" data-direction="down" aria-label="Select hold below" disabled>↓</button>
+              <button type="button" data-direction="right" aria-label="Select hold to the right" disabled>→</button>
             </div>
           </div>
           <div class="climb-instructions" id="climb-instructions">
             <p class="eyebrow">How to climb</p>
-            <p><strong>Keyboard</strong> · After starting, focus the wall. Use arrow keys to choose a hold in that direction, then <kbd>Space</kbd> or <kbd>Enter</kbd> to move. <kbd>Tab</kbd> leaves the wall.</p>
-            <p><strong>Touch & mouse</strong> · Pick a hold on the wall or use the arrows, then press Make the move.</p>
-            <p class="climb-tip">Go one hold at a time. No clock, no score, no rush.</p>
+            <p><strong>Keyboard</strong> · Focus the wall, use arrows to select, then <kbd>Space</kbd> or <kbd>Enter</kbd> to move. <kbd>R</kbd> rests on a jug. <kbd>Tab</kbd> leaves the wall.</p>
+            <p><strong>Touch & mouse</strong> · Pick a hold, then Make the move. Rest when you reach a J hold.</p>
+            <p><strong>Read ahead</strong> · Reachable shortcuts cost extra. Mint holds and moves beyond your reach cost 8 endurance without advancing. Run out before the summit and you’re back on the mat.</p>
+            <p class="climb-tip">Thinking is free. Only moves spend your grip.</p>
           </div>
         </div>
       </section>
