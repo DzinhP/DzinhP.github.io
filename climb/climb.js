@@ -44,7 +44,7 @@
       finishAttempt('fell');
     } else if (result.outcome === 'rest-complete') {
       render();
-      status.textContent = `Rest complete. ${grip()} endurance left. The drain is back on — keep climbing.`;
+      status.textContent = 'Rest complete. The drain is back on — keep climbing.';
     } else {
       renderVitals();
       if (state.phase === 'climbing') {
@@ -122,7 +122,7 @@
     } else {
       const next = hold.type === 'jug' ? ' You can shake out there for 2 seconds.' : '';
       status.textContent = preview.cost >= state.endurance && !(hold.type === 'finish' && preview.cost === state.endurance)
-        ? `${hold.label}. Costs ${preview.cost}, but you have only ${state.endurance.toFixed(1)}. This move will use up your grip; find a cheaper move or rest.`
+        ? `${hold.label}. You don’t have enough grip for this ${preview.cost}-point move. Find a cheaper move or rest.`
         : `${hold.label}. Costs ${preview.cost} endurance.${next} Space or Enter to move.`;
     }
   }
@@ -263,10 +263,10 @@
     const restHint = game.canRest(state) ? ' Jug reached. Press R or Rest +35 for a two-second shakeout.' : '';
     const messages = {
       unselected: 'Choose a hold first. Use an arrow key on the wall or pick a hold.',
-      'off-route': `Wrong route. −${game.mistakeCost} endurance; ${grip()} left. Follow the coral holds.`,
+      'off-route': `Wrong route. −${game.mistakeCost} endurance. Follow the coral holds.`,
       visited: 'You’ve already climbed that hold. Choose a coral hold above you.',
-      'out-of-reach': `Too far. −${game.mistakeCost} endurance; ${grip()} left. Find a closer coral hold.`,
-      moved: `Nice move. ${grip()} endurance left.${restHint}`,
+      'out-of-reach': `Too far. −${game.mistakeCost} endurance. Find a closer coral hold.`,
+      moved: `Nice move. Keep an eye on the clock.${restHint}`,
       complete: `Topped out in ${elapsed()} with ${grip()}% endurance left. Beat your time or shuffle a new route.`,
       fell: 'Out of grip! You’re back on the mat. Retry this route and use the J holds to recover.'
     };
