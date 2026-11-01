@@ -280,10 +280,10 @@ test('same-route retry resets progress without changing the wall or mutating pri
 test('drain rates depend on the current hold and a slow attempt falls at the exact exhaustion moment', () => {
   const route = game.generateRoute(31);
   const start = game.start(route);
-  assert.equal(game.drainRate(start), 1.8);
+  assert.equal(game.drainRate(start), 2.1);
   const activeSecond = game.advance(start, 1000);
   assert.equal(activeSecond.outcome, 'ticked');
-  near(activeSecond.state.endurance, 98.2);
+  near(activeSecond.state.endurance, 97.9);
   assert.equal(activeSecond.state.elapsedMs, 1000);
   assert.equal(start.endurance, 100);
   assert.equal(start.elapsedMs, 0);
@@ -291,9 +291,9 @@ test('drain rates depend on the current hold and a slow attempt falls at the exa
   assert.equal(expired.outcome, 'fell');
   assert.equal(expired.state.phase, 'fallen');
   assert.equal(expired.state.endurance, 0);
-  near(expired.state.elapsedMs, 100 / 1.8 * 1000);
+  near(expired.state.elapsedMs, 100 / 2.1 * 1000);
   assert.equal(game.advance(expired.state, 120000).state, expired.state);
-  for (const [type, rate] of [['jug', 1], ['crimp', 2.6], ['sloper', 3.4]]) {
+  for (const [type, rate] of [['jug', 1.15], ['crimp', 3], ['sloper', 3.9]]) {
     const hold = route.holds.find(item => item.type === type);
     assert.ok(hold, `${type} fixture hold is present`);
     const held = { ...start, current: hold.id };
@@ -327,18 +327,18 @@ test('rest boundary leftovers drain immediately and huge ticks never add elapsed
   assert.equal(crossing.outcome, 'rest-complete');
   assert.equal(crossing.state.phase, 'climbing');
   assert.equal(crossing.state.restRemainingMs, 0);
-  near(crossing.state.endurance, atJug.endurance + 35 - .5);
+  near(crossing.state.endurance, atJug.endurance + 35 - .575);
   assert.equal(crossing.state.elapsedMs, 2500);
   const huge = game.advance(resting, Number.MAX_VALUE);
   assert.equal(huge.outcome, 'fell');
   assert.equal(huge.state.endurance, 0);
-  near(huge.state.elapsedMs, 2000 + (atJug.endurance + 35) * 1000);
+  near(huge.state.elapsedMs, 2000 + (atJug.endurance + 35) / 1.15 * 1000);
   assert.equal(Number.isFinite(huge.state.elapsedMs), true);
   const fractional = game.advance(resting, 1999.75).state;
   near(fractional.restRemainingMs, .25);
   const lastFraction = game.advance(fractional, .5);
   assert.equal(lastFraction.outcome, 'rest-complete');
-  near(lastFraction.state.endurance, atJug.endurance + 35 - .00025);
+  near(lastFraction.state.endurance, atJug.endurance + 35 - .0002875);
   near(lastFraction.state.elapsedMs, 2000.25);
 });
 

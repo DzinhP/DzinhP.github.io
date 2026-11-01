@@ -8,7 +8,7 @@
   const reach = 38;
   const mistakeCost = 12;
   const skipCost = 12;
-  const drainRates = Object.freeze({ start: 1.8, jug: 1, crimp: 2.6, sloper: 3.4 });
+  const drainRates = Object.freeze({ start: 2.1, jug: 1.15, crimp: 3, sloper: 3.9 });
   const columns = [18, 50, 82];
 
   function seededRandom(seed) {
