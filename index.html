@@ -11,7 +11,12 @@
     <title>Dzinh Pham — A personal basecamp</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="experience.css">
+    <link rel="stylesheet" href="route.css">
+    <link rel="stylesheet" href="interactions.css">
     <script src="script.js" defer></script>
+    <script src="route.js" defer></script>
+    <script src="interactions.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -39,10 +44,33 @@
           </nav>
           <div class="hero-actions"><a class="button button-dark" href="#work">Explore my work <span aria-hidden="true">↘</span></a><a class="hero-notes-link" href="writing/">Read field notes <span aria-hidden="true">↗</span></a></div>
         </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="art-caption"><span>THE NEXT MOVE</span><span>BOULDER STUDY / 01</span></div>
-          <img class="boulder-illustration" src="assets/boulder.svg" alt="" width="600" height="620" fetchpriority="high">
-          <div class="art-footer"><span>A LITTLE CHALK. A LITTLE CURIOSITY.</span><span>↗</span></div>
+        <div class="climb-scene" aria-label="Explore the basecamp">
+          <div class="route-wall">
+            <img class="route-rock" src="assets/boulder.svg" alt="An illustrated boulder with a climbing route and a crash pad." width="600" height="620" fetchpriority="high">
+            <div class="route-caption"><strong>THE NEXT MOVE</strong><span>A ROUTE THROUGH MY WORLD</span></div>
+            <div class="route-controls" role="group" aria-label="Pick a climbing hold to explore the site" hidden>
+              <svg class="route-line" viewBox="0 0 600 620" aria-hidden="true">
+                <path class="route-track" d="M175 425C218 403 315 399 355 360S256 312 220 285S291 224 335 197"/>
+                <path class="route-trace" pathLength="1" d="M175 425C218 403 315 399 355 360"/>
+                <path class="route-trace" pathLength="1" d="M355 360C395 321 256 312 220 285"/>
+                <path class="route-trace" pathLength="1" d="M220 285C184 258 291 224 335 197"/>
+              </svg>
+              <button class="route-hold" style="--hold-x:29.1667%;--hold-y:68.5484%" type="button" aria-label="01 Work — explore projects" aria-pressed="true" aria-controls="route-panel"><span class="route-hold-number" aria-hidden="true">01</span><span class="route-hold-label" aria-hidden="true">Work</span></button>
+              <button class="route-hold" style="--hold-x:59.1667%;--hold-y:58.0645%" type="button" aria-label="02 Notes — explore field notes" aria-pressed="false" aria-controls="route-panel"><span class="route-hold-number" aria-hidden="true">02</span><span class="route-hold-label" aria-hidden="true">Notes</span></button>
+              <button class="route-hold" style="--hold-x:36.6667%;--hold-y:45.9677%" type="button" aria-label="03 About — get to know me" aria-pressed="false" aria-controls="route-panel"><span class="route-hold-number" aria-hidden="true">03</span><span class="route-hold-label" aria-hidden="true">About</span></button>
+              <button class="route-hold" style="--hold-x:55.8333%;--hold-y:31.7742%" type="button" aria-label="04 Hello — explore contact" aria-pressed="false" aria-controls="route-panel"><span class="route-hold-number" aria-hidden="true">04</span><span class="route-hold-label" aria-hidden="true">Hello</span></button>
+            </div>
+            <p class="route-invitation">A little chalk. A little curiosity.</p>
+          </div>
+          <div class="route-panel" id="route-panel">
+            <div class="route-panel-topline"><span class="route-panel-category">01 / Selected work</span><span class="route-panel-markers" aria-hidden="true"><i class="is-current"></i><i></i><i></i><i></i></span></div>
+            <div class="route-panel-content" aria-live="polite" aria-atomic="true">
+              <h2 class="route-panel-title">Ideas, made real.</h2>
+              <p class="route-panel-description">Education, interview practice, and a little more community.</p>
+              <a class="route-destination" data-route-link href="#work"><span class="route-destination-label">Explore the projects</span><span aria-hidden="true">↗</span></a>
+            </div>
+            <a class="route-link-text" data-route-link href="#work">Explore the projects</a>
+          </div>
         </div>
         <div class="hero-foot"><span>Code, climbing & everything in between.</span><a href="#work">Take a look around <span aria-hidden="true">↓</span></a></div>
       </section>

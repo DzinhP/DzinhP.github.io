@@ -1,0 +1,91 @@
+/* The homepage keeps a field-guide feel, with a little more depth. */
+html { scroll-padding-top: 112px; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  height: 92px;
+  background: #f5f4edf2;
+  box-shadow: 0 0 0 100vmax #f5f4edf2;
+  clip-path: inset(0 -100vmax);
+  backdrop-filter: blur(14px);
+}
+
+.skip-link { z-index: 60; }
+.hero { padding-top: 56px; column-gap: 54px; grid-template-columns: 1.05fr 1fr; }
+.hero h1 { font-size: clamp(66px, 6.7vw, 98px); }
+.hero h1 em { position: relative; display: inline-block; }
+.hero h1 em::after {
+  content: "";
+  position: absolute;
+  left: 2%;
+  right: -4%;
+  bottom: -7px;
+  height: 7px;
+  border-top: 2px solid var(--accent);
+  border-radius: 50%;
+  transform: rotate(-3deg);
+  opacity: .75;
+}
+.hero-foot { margin-top: 48px; }
+.button-dark { border-radius: 3px; }
+
+.work {
+  position: relative;
+  isolation: isolate;
+  background: #21372f;
+  color: #f5f4ed;
+}
+.work::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: repeating-radial-gradient(ellipse at 105% 0%, transparent 0 48px, #d5dfb70b 49px 50px, transparent 51px 88px);
+  pointer-events: none;
+}
+.work .eyebrow { color: #cfac87; }
+.work h2 em { color: #ceddb4; }
+.work .section-heading > p, .work .project > p { color: #ced7ce; }
+.work .project-meta { color: #b2c1b4; }
+.work .tags li { border-color: #57705d; color: #d8e1d0; background: #1a302740; }
+.work .text-link { border-color: #839a83; }
+.work .text-link:hover { color: #edb297; border-color: #edb297; }
+.work a:focus-visible { outline-color: #f5f4ed; }
+.project-visual { border-radius: 7px; }
+.project { perspective: 1000px; }
+.project h3 a { text-decoration-thickness: 1px; }
+
+.field-note-entry { box-shadow: 3px 4px 0 #e8e8de, 0 15px 35px -25px #283e3240; }
+.social-list > a { transition: padding .2s, color .2s; }
+.social-list > a:hover { padding-inline: 12px; }
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .field-note-entry { transform: rotate(1deg); transition: transform .3s, box-shadow .3s; }
+  .field-note-entry:hover, .field-note-entry:focus-within { transform: rotate(0); box-shadow: 3px 4px 0 #e8e8de, 0 20px 35px -20px #283e3230; }
+}
+
+@media (max-width: 1100px) {
+  .hero { column-gap: 34px; padding-top: 45px; }
+  .hero h1 { font-size: 76px; }
+}
+@media (max-width: 800px) {
+  .site-header { height: 82px; }
+  .hero { column-gap: 25px; }
+  .hero h1 { font-size: 65px; }
+}
+@media (min-width: 601px) and (max-width: 720px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero .climb-scene { max-width: 440px; margin-top: 40px; }
+}
+@media (max-width: 600px) {
+  html { scroll-padding-top: 104px; }
+  .site-header { position: sticky; }
+  .hero { grid-template-columns: 1fr; padding-top: 36px; }
+  .hero h1 { font-size: clamp(65px, 15.6vw, 87px); }
+  .hero-foot { margin-top: 28px; }
+}
+@media (max-width: 360px) {
+  .hero h1 { font-size: 54px; }
+}

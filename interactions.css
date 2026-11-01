@@ -1,0 +1,70 @@
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 3px;
+  z-index: 50;
+  background: var(--accent);
+  transform: scaleX(var(--scroll-progress, 0));
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.site-nav a[aria-current="location"] {
+  color: #a2472e;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 7px;
+}
+
+.project-visual,
+.project-visual:hover {
+  transform: none;
+}
+
+.project-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(
+    circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    #ffffff48,
+    transparent 65%
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion-ready .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 600ms ease, transform 600ms cubic-bezier(.2, .7, .2, 1);
+  }
+
+  .motion-ready .reveal.is-visible,
+  .motion-ready .reveal:focus-within {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project-visual {
+    transition: transform 260ms ease, box-shadow 260ms ease;
+  }
+
+  .project-visual.has-pointer {
+    transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    box-shadow: 0 18px 28px -22px #25332b66;
+    transition-duration: 100ms;
+  }
+
+  .project-visual::after {
+    transition: opacity 240ms ease;
+  }
+
+  .project-visual.has-pointer::after {
+    opacity: 1;
+  }
+}

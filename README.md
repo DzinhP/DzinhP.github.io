@@ -16,7 +16,10 @@ Open [localhost:4173](http://localhost:4173).
 
 - Edit `index.html` for biography, projects, and links.
 - Edit `styles.css` for colors, typography, and layout.
+- Edit `experience.css` for the homepage's sticky header, forest-green project section, and visual accents.
 - Edit `script.js` for the mobile navigation and copy-email interaction.
+- Edit `route.js` for the four climbing holds' descriptions and destinations; their layout and animation are in `route.css`.
+- Edit `interactions.js` and `interactions.css` for project-card tilt, section reveals, active navigation, and scroll progress. These enhancements respect reduced-motion preferences, and the core content and links work without JavaScript.
 - Edit `writing/index.html` for the field notes archive, `writing/writing.css` for its layout, and `writing/writing.js` for the category filters.
 - Edit `404.html` for the missing-page screen.
 
