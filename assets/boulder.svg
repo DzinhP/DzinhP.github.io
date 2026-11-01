@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="620" viewBox="0 0 600 620" fill="none">
+  <title>A boulder with a marked climbing line and a crash pad</title>
+  <defs>
+    <clipPath id="rock">
+      <path d="M105 280 145 192Q150 181 163 175L252 132Q267 125 281 130L388 155Q400 158 409 169L465 242Q474 253 476 269L494 416Q495 432 480 442L428 479Q416 487 399 488L228 499Q214 500 200 493L128 458Q113 451 110 436L89 355Q85 340 91 326Z"/>
+    </clipPath>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".055"/></feComponentTransfer>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+  </defs>
+
+  <path fill="#DFE6D7" d="M0 0h600v620H0z"/>
+
+  <!-- The distant contours echo the grain of a climbing guidebook. -->
+  <g stroke="#A7B49F" stroke-opacity=".38" stroke-width="1.1" stroke-linecap="round">
+    <path d="M-25 207c66-65 107-83 151-83 57 1 53-46 114-52 67-7 82 20 141 17 75-4 116-48 225-13"/>
+    <path d="M-25 231c69-65 111-89 157-88 61 2 61-45 111-49 72-6 87 21 144 18 83-4 128-45 221-13"/>
+    <path d="M-24 256c69-69 125-96 166-94 59 3 63-43 107-43"/>
+    <path d="M415 132c63-5 117-35 191-9"/>
+    <path d="M490 193c38-16 77-19 119-7"/>
+    <path d="M502 214c42-14 74-12 104-4"/>
+    <path d="M-9 477c31-18 61-26 93-23"/>
+    <path d="M-5 501c44-28 76-30 117-26"/>
+    <path d="M-5 524c42-29 91-33 139-22"/>
+  </g>
+
+  <!-- Soft, broken ground keeps the stone from floating. -->
+  <path d="M69 492c45-18 102-17 155-9 67 9 114-8 176-5 54 3 100 7 145 25-42 18-129 27-227 25-101-2-198-11-249-36Z" fill="#ABB79F" opacity=".5"/>
+  <path d="M102 487c71-9 124-4 181-3 95 2 140-17 201 6-58 14-119 17-188 16-78-1-141-6-194-19Z" fill="#65745D" opacity=".2"/>
+
+  <!-- Broad, slightly curved facets give the rock its weathered volume. -->
+  <g clip-path="url(#rock)" filter="url(#grain)">
+    <path fill="#C1B8A5" d="M77 113h434v395H77z"/>
+    <path d="m144 190 123-62 122 27-78 65-96 24Z" fill="#DED5C2"/>
+    <path d="m144 190 71 54-30 104-78 89-21-90Z" fill="#B8B29E"/>
+    <path d="m215 244 96-24 77-65 78 89-53 76-73 87-105 24-50-83Z" fill="#CFC6B2"/>
+    <path d="m466 244 28 178-65 60-89-75 73-87Z" fill="#A6A18D"/>
+    <path d="m185 348 50 83 105-24 89 75-204 18-116-63Z" fill="#B6AC98"/>
+    <path d="m215 244 56 22 40-46-67 7Z" fill="#EBE2CF" opacity=".5"/>
+    <path d="m340 407 55 23 34 52-48-24Z" fill="#8C8F7C" opacity=".35"/>
+    <path d="m107 437 78-89-12 56 34 44-8 44Z" fill="#A29E89" opacity=".55"/>
+    <g stroke="#827F6D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5">
+      <path d="m149 196 66 48-13 42-3 26-14 36"/>
+      <path d="m215 244 38-9 29-6 29-9 48-38"/>
+      <path d="m419 312-24 27-14 28-41 40-58 14"/>
+      <path d="m134 406 23-22 10-20"/>
+      <path d="m388 177 18 30 9 23"/>
+      <path d="m442 375 6 30-14 27-2 19"/>
+    </g>
+    <!-- Contour strokes follow the rock, rather than outlining every facet. -->
+    <g stroke="#888574" stroke-width="1" stroke-linecap="round" opacity=".42">
+      <path d="M235 180c25-13 42-20 69-11 20 7 32 8 50 1"/>
+      <path d="M232 192c24-13 45-15 68-9 12 3 22 4 33 1"/>
+      <path d="M294 301c27-8 52-3 75-14 23-12 36-32 58-39"/>
+      <path d="M303 314c25-8 50-4 73-17 18-10 35-31 52-36"/>
+      <path d="M311 328c25-8 42-6 66-21 17-10 31-24 43-28"/>
+      <path d="M236 460c32-6 53-10 76-7 20 2 36 12 55 13"/>
+      <path d="M251 474c25-5 46-7 62-5 17 1 29 7 44 9"/>
+      <path d="M114 324c11-15 13-40 28-54 8-8 16-10 24-15"/>
+      <path d="M120 341c13-13 14-43 30-60"/>
+    </g>
+    <g fill="#7E816D" opacity=".33">
+      <ellipse cx="397" cy="383" rx="2" ry="1.3"/>
+      <ellipse cx="423" cy="349" rx="1.2" ry="2"/>
+      <ellipse cx="351" cy="351" rx="1.9" ry="1.1"/>
+      <ellipse cx="312" cy="374" rx="1.4" ry="1.2"/>
+      <ellipse cx="170" cy="232" rx="1.4" ry="1.2"/>
+      <ellipse cx="252" cy="396" rx="1.1" ry="2"/>
+      <ellipse cx="270" cy="291" rx="1.3" ry="1"/>
+    </g>
+  </g>
+
+  <!-- A quiet line of coral holds makes the intended climb immediately legible. -->
+  <path d="M175 425c18-24 32-35 53-58 12-14 9-41 23-58 16-20 43-24 56-47 14-24 11-44 27-62" stroke="#F5EEDD" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 9" opacity=".8"/>
+  <g fill="#F2EBDD" opacity=".7">
+    <path d="M158 419c9-7 21-8 29-2l1 7-27 8-7-5Z"/>
+    <path d="M211 361c4-7 17-11 26-6l4 9-26 9-7-5Z"/>
+    <path d="M237 305c4-8 14-12 21-8l4 7-8 10-17 3-4-5Z"/>
+    <path d="M291 257c5-6 16-8 24-3l1 8-25 6-5-5Z"/>
+    <path d="M320 196c5-7 15-9 24-5l5 7-10 8-20-1-3-5Z"/>
+  </g>
+  <g fill="#C87961" stroke="#9F6955" stroke-width=".7" stroke-linejoin="round">
+    <path d="m163 420 12-4 9 5-2 6-15 4-7-4Z"/>
+    <path d="m216 359 11-2 10 5-3 7-14 3-8-5Z"/>
+    <path d="m243 302 9-5 6 6-3 10-13 3-4-6Z"/>
+    <path d="m295 255 12-1 7 5-5 7-15 1-5-5Z"/>
+    <path d="m325 193 12-2 8 6-6 7-17-1-3-5Z"/>
+  </g>
+  <g stroke="#E5AB8D" stroke-width="2" stroke-linecap="round">
+    <path d="m165 421 10-2 6 2"/>
+    <path d="m218 361 9-1 6 2"/>
+    <path d="m244 304 8-4"/>
+    <path d="m296 258 10-1 4 2"/>
+    <path d="m325 196 11-2 5 3"/>
+  </g>
+
+  <!-- An open crash pad: practical equipment, with no ropes or harnesses. -->
+  <path d="m332 485 40-25 123 28-30 36-131-30Z" fill="#263C30"/>
+  <path d="m332 485 66 15-1 9-63-15Z" fill="#203229"/>
+  <path d="m398 500 97-12-30 36-68-15Z" fill="#22372C"/>
+  <path d="m338 483 34-19 58 13-32 20Z" fill="#405746"/>
+  <path d="m402 498 32-20 54 13-26 29Z" fill="#4B6250"/>
+  <path d="m430 477-32 23" stroke="#89927B" stroke-width="1.2"/>
+  <path d="m351 483 21-11 43 10" stroke="#6F8066" stroke-width="1" stroke-linecap="round"/>
+  <path d="m407 499 27-16 42 10" stroke="#71816B" stroke-width="1" stroke-linecap="round"/>
+  <path d="m454 518 2 6-14 5-7-5" stroke="#263C30" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m361 491-6 4 12 3 6-4" stroke="#A8AB8F" stroke-width="1.2" stroke-linecap="round"/>
+
+  <g stroke="#78866C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m81 481-7-27m7 27 8-20m-7 12-11-12"/>
+    <path d="m110 495-3-18m3 18 9-10"/>
+    <path d="m519 491 7-32m-6 24-7-18m11 9 12-8"/>
+    <path d="m283 517-4-17m4 17 8-9"/>
+  </g>
+  <g fill="#87947B">
+    <path d="M62 488c7-7 15-7 20-1-8 4-14 4-20 1Z"/>
+    <path d="M498 509c9-8 18-7 26-1-9 3-18 4-26 1Z"/>
+    <path d="M235 523c6-5 13-5 20 0-7 2-14 2-20 0Z"/>
+  </g>
+</svg>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f4ed">
+    <meta name="description" content="Writing, learning notes, and occasional updates from Dzinh Pham.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Field notes — Dzinh Pham">
+    <meta property="og:description" content="A notebook for ideas, things I'm learning, and small updates along the way.">
+    <title>Field notes — Dzinh Pham</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="writing.css">
+    <script src="../script.js" defer></script>
+    <script src="writing.js" defer></script>
+  </head>
+  <body class="writing-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="wordmark" href="../" aria-label="Dzinh Pham, home">dp<span aria-hidden="true">.</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu <span aria-hidden="true">+</span></button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <a href="../#work">Work</a>
+        <a href="./" aria-current="page">Writing</a>
+        <a href="../#about">About</a>
+        <a class="nav-contact" href="../#contact">Say hello <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="main" class="wrap notes-main">
+      <section class="notes-intro" aria-labelledby="notes-heading">
+        <div>
+          <p class="eyebrow">The personal notebook</p>
+          <h1 id="notes-heading">Field <em>notes.</em></h1>
+          <p class="notes-description">Things I'm thinking about, things I'm learning, and small updates along the way.</p>
+        </div>
+        <div class="notebook-sketch" aria-hidden="true">
+          <svg viewBox="0 0 240 180" fill="none">
+            <path d="M28 151C10 112 32 75 69 46S145 16 187 38 237 117 205 151" stroke="#bfcab8"/>
+            <path d="M42 149C23 116 49 81 81 56S146 31 178 50 222 117 195 150" stroke="#cbd3c4"/>
+            <path d="M58 146C41 117 65 89 95 68S148 45 171 62 207 118 181 150" stroke="#d6ddcf"/>
+            <path d="M91 147C93 127 153 123 139 100S98 96 111 68 148 52 151 31" stroke="#7d8c71" stroke-dasharray="3 6" stroke-linecap="round"/>
+            <path d="M81 137c7-5 17-3 19 4s-7 13-16 10-10-8-3-14Z" fill="#778769"/>
+            <path d="M133 93c7-6 19-5 22 1s-3 13-13 12-16-7-9-13Z" fill="#e67554"/>
+            <path d="M101 60c7-5 17-4 19 2s-6 14-14 12-13-8-5-14Z" fill="#778769"/>
+            <path d="M144 23c6-4 13-4 15 2s-1 12-9 11-13-8-6-13Z" fill="#e67554"/>
+            <path d="m69 155 4 4m-5-1 5-2M167 20l4 4m-5-1 5-2" stroke="#89977e" stroke-linecap="round"/>
+          </svg>
+          <p>One thought. Then the next.</p>
+        </div>
+      </section>
+
+      <section class="notes-collection" aria-label="Browse field notes">
+        <div class="notes-toolbar">
+          <div class="note-filters" role="group" aria-label="Filter field notes" hidden>
+            <button type="button" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" data-filter="writing" aria-pressed="false">Writing</button>
+            <button type="button" data-filter="learning" aria-pressed="false">Learning notes</button>
+            <button type="button" data-filter="updates" aria-pressed="false">Updates</button>
+          </div>
+          <p class="filter-status" role="status" aria-live="polite" aria-atomic="true">1 note</p>
+        </div>
+        <div class="notes-list">
+          <!-- Add a new note here, using data-category="writing", "learning", or "updates". -->
+          <article class="note-entry" data-category="updates">
+            <div class="note-meta"><span class="note-category">Updates</span><time datetime="2026-11-01">Nov 1, 2026</time></div>
+            <div class="note-summary">
+              <h2><a href="a-new-basecamp/">A new basecamp <span aria-hidden="true">↗</span></a></h2>
+              <p>A fresh home for my projects, writing, learning notes, and whatever comes next.</p>
+            </div>
+            <span class="note-read-time">2 min read</span>
+          </article>
+        </div>
+        <div class="notes-empty" hidden>
+          <span class="empty-mark" aria-hidden="true">↗</span>
+          <h2>No writing yet.</h2>
+          <p>There's room for the next thought.</p>
+          <button class="text-link" type="button" data-reset-filter>View all notes <span aria-hidden="true">↗</span></button>
+        </div>
+      </section>
+      <div class="notes-signoff"><p>A little room to think out loud.</p><a class="text-link" href="../">Back to basecamp <span aria-hidden="true">↖</span></a></div>
+    </main>
+
+    <footer class="site-footer wrap"><p>© <span id="year">2026</span> Dzinh Pham</p><p>A personal basecamp. Always evolving.</p><a href="#main">Back to top <span aria-hidden="true">↑</span></a></footer>
+  </body>
+</html>
