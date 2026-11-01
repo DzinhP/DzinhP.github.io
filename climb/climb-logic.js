@@ -3,10 +3,12 @@
 
   const totalSteps = 8;
   const maxEndurance = 100;
-  const restRecovery = 45;
+  const restRecovery = 35;
+  const restDurationMs = 2000;
   const reach = 38;
-  const mistakeCost = 8;
-  const skipCost = 9;
+  const mistakeCost = 12;
+  const skipCost = 12;
+  const drainRates = Object.freeze({ start: 1.8, jug: 1, crimp: 2.6, sloper: 3.4 });
   const columns = [18, 50, 82];
 
   function seededRandom(seed) {
@@ -30,7 +32,7 @@
     for (let step = 0; step <= totalSteps; step++) {
       if (step > 0) column = column === 1 ? pick(2) * 2 : 1;
       const type = step === 0 ? 'start' : step === totalSteps ? 'finish' : step === 3 || step === 6 ? 'jug' : pick(2) === 0 ? 'crimp' : 'sloper';
-      const cost = type === 'start' ? 0 : type === 'jug' ? 18 : type === 'finish' ? 20 + pick(3) : (type === 'crimp' ? 22 : 24) + pick(3);
+      const cost = type === 'start' ? 0 : type === 'jug' ? 10 : type === 'finish' ? 14 + pick(3) : (type === 'crimp' ? 13 : 16) + pick(3);
       const id = step === 0 ? 'start' : step === totalSteps ? 'finish' : `hold-${step}`;
       const label = type === 'start' ? 'Starting hold' : type === 'finish' ? 'Coral finishing hold' : `Coral hold ${step}, ${type === 'jug' ? 'rest jug' : type}`;
       holds.push({ id, x: columns[column], y: 88 - step * 10, step, type, label, cost });
@@ -57,7 +59,7 @@
   }
 
   function initialState(route = generateRoute()) {
-    return { route, phase: 'ready', current: 'start', selected: null, moves: 0, visited: ['start'], endurance: maxEndurance, rested: [], mistakes: 0 };
+    return { route, phase: 'ready', current: 'start', selected: null, moves: 0, visited: ['start'], endurance: maxEndurance, rested: [], mistakes: 0, elapsedMs: 0, restRemainingMs: 0, pausedFrom: null };
   }
 
   function start(route) {
@@ -66,6 +68,61 @@
 
   function findHold(state, id) {
     return state.route.holds.find(hold => hold.id === id);
+  }
+
+  function drainRate(state) {
+    return state.phase === 'climbing' ? drainRates[findHold(state, state.current)?.type] || 0 : 0;
+  }
+
+  function advance(state, elapsedMs) {
+    if (!Number.isFinite(elapsedMs) || elapsedMs <= 0 || (state.phase !== 'climbing' && state.phase !== 'resting')) {
+      return { state, outcome: 'inactive' };
+    }
+    let next = state;
+    let remainingMs = elapsedMs;
+    let completedRest = false;
+
+    if (next.phase === 'resting') {
+      const restingMs = Math.min(remainingMs, next.restRemainingMs);
+      const restRemainingMs = next.restRemainingMs - restingMs;
+      next = {
+        ...next,
+        endurance: Math.min(maxEndurance, next.endurance + restRecovery * restingMs / restDurationMs),
+        elapsedMs: next.elapsedMs + restingMs,
+        restRemainingMs,
+        phase: restRemainingMs === 0 ? 'climbing' : 'resting'
+      };
+      remainingMs -= restingMs;
+      completedRest = restRemainingMs === 0;
+    }
+
+    if (remainingMs > 0 && next.phase === 'climbing') {
+      const perMs = drainRate(next) / 1000;
+      const untilFallMs = perMs > 0 ? next.endurance / perMs : Infinity;
+      const activeMs = Math.min(remainingMs, untilFallMs);
+      // This tiny energy tolerance keeps an exact boundary consistent when a
+      // browser delivers many fractional frames instead of one large tick.
+      const fallen = remainingMs >= untilFallMs || next.endurance - remainingMs * perMs <= 1e-10;
+      next = {
+        ...next,
+        endurance: fallen ? 0 : next.endurance - activeMs * perMs,
+        elapsedMs: next.elapsedMs + activeMs,
+        phase: fallen ? 'fallen' : 'climbing'
+      };
+      if (fallen) return { state: next, outcome: 'fell' };
+    }
+
+    return { state: next, outcome: completedRest ? 'rest-complete' : 'ticked' };
+  }
+
+  function pause(state) {
+    if (state.phase !== 'climbing' && state.phase !== 'resting') return state;
+    return { ...state, phase: 'paused', pausedFrom: state.phase };
+  }
+
+  function resume(state) {
+    if (state.phase !== 'paused' || (state.pausedFrom !== 'climbing' && state.pausedFrom !== 'resting')) return state;
+    return { ...state, phase: state.pausedFrom, pausedFrom: null };
   }
 
   function select(state, id) {
@@ -127,20 +184,20 @@
   }
 
   function canRest(state) {
-    return state.phase === 'climbing' && findHold(state, state.current)?.type === 'jug' && !state.rested.includes(state.current);
+    return state.phase === 'climbing' && state.endurance > 0 && findHold(state, state.current)?.type === 'jug' && !state.rested.includes(state.current);
   }
 
   function rest(state) {
-    if (state.phase !== 'climbing') return { state, outcome: 'inactive' };
+    if (state.phase !== 'climbing' || state.endurance <= 0) return { state, outcome: 'inactive' };
     if (findHold(state, state.current)?.type !== 'jug') return { state, outcome: 'not-restable' };
     if (state.rested.includes(state.current)) return { state, outcome: 'already-rested' };
     return {
-      state: { ...state, endurance: Math.min(maxEndurance, state.endurance + restRecovery), rested: [...state.rested, state.current] },
-      outcome: 'rested'
+      state: { ...state, phase: 'resting', restRemainingMs: restDurationMs, rested: [...state.rested, state.current] },
+      outcome: 'resting'
     };
   }
 
-  const api = Object.freeze({ generateRoute, initialState, start, select, selectDirection, previewMove, move, rest, canRest, maxEndurance, restRecovery, reach, mistakeCost, skipCost });
+  const api = Object.freeze({ generateRoute, initialState, start, select, selectDirection, previewMove, move, rest, canRest, advance, drainRate, pause, resume, maxEndurance, restRecovery, restDurationMs, reach, mistakeCost, skipCost });
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.BasecampClimb = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

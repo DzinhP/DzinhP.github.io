@@ -9,10 +9,10 @@
     <link rel="icon" href="../favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../basecamp.css">
-    <link rel="stylesheet" href="climb.css?v=4">
+    <link rel="stylesheet" href="climb.css?v=6">
     <script src="../script.js" defer></script>
-    <script src="climb-logic.js?v=4" defer></script>
-    <script src="climb.js?v=4" defer></script>
+    <script src="climb-logic.js?v=6" defer></script>
+    <script src="climb.js?v=6" defer></script>
   </head>
   <body class="climbing-page">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -45,17 +45,18 @@
           <p class="eyebrow">A little break at the wall</p>
           <h1 id="climbing-heading">One more <em>move.</em></h1>
         </div>
-        <p>A fresh route. A finite grip.<br>Read the wall, save your strength, and earn the top out.</p>
+        <p>The wall won’t wait.<br>Read the route, beat the burn, and earn the top out.</p>
       </section>
 
       <section class="climb-game" aria-labelledby="game-heading">
         <div class="climb-wall-panel">
           <div class="climb-wall-topline"><span>BASECAMP BOULDERING CLUB</span><span id="climb-route-code">↗</span></div>
           <div class="climb-endurance" id="climb-endurance" hidden>
-            <div class="climb-endurance-label"><span>Endurance</span><strong id="climb-endurance-value">100%</strong><span id="climb-endurance-note">Fresh arms</span></div>
+            <div class="climb-endurance-label"><span>Endurance</span><strong id="climb-endurance-value">100%</strong><span id="climb-endurance-note">Ready</span><button class="climb-pause" id="climb-pause" type="button" disabled>Pause</button></div>
             <div class="climb-endurance-track" id="climb-endurance-meter" role="meter" aria-label="Endurance" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span id="climb-endurance-fill"></span></div>
+            <div class="climb-timing"><span id="climb-drain-rate">Timed challenge</span><span id="climb-seconds-left" role="timer" aria-live="off">Clock starts when you climb</span></div>
           </div>
-          <div class="climb-stage" id="climb-stage" tabindex="0" role="group" aria-label="Climbing wall" aria-describedby="climb-instructions" hidden>
+          <div class="climb-stage" id="climb-stage" tabindex="0" role="group" aria-label="Climbing wall" aria-describedby="climb-keyboard-help" hidden>
             <div class="wall-facet wall-facet-one" aria-hidden="true"></div>
             <div class="wall-facet wall-facet-two" aria-hidden="true"></div>
             <span class="wall-finish-label" aria-hidden="true">TOP OUT ↗</span>
@@ -85,28 +86,29 @@
           <div class="climb-mat" aria-hidden="true"><span>SOFT LANDINGS. SMALL WINS.</span><span>READ. REST. SEND.</span></div>
           <div class="climb-board-toolbar" id="climb-board-toolbar" hidden>
             <div class="climb-board-readout"><p id="climb-board-selection">Read the coral route</p><strong id="climb-move-cost"></strong></div>
-            <p class="climb-status" id="climb-status" role="status" aria-live="polite" aria-atomic="true">Start with a full grip. Find the J holds to recover along the way.</p>
+            <p class="climb-status" id="climb-status" role="status" aria-live="polite" aria-atomic="true">Study the route first. Once you start, every second costs grip.</p>
             <div class="climb-board-buttons">
               <button type="button" class="climb-board-action" id="climb-board-action">Start climbing <span aria-hidden="true">↗</span></button>
-              <button type="button" class="climb-rest" id="climb-rest" disabled>Rest +45</button>
+              <button type="button" class="climb-rest" id="climb-rest" disabled>Rest +35</button>
             </div>
+            <div class="climb-rest-progress" id="climb-rest-progress" aria-hidden="true" hidden><span id="climb-rest-fill"></span></div>
           </div>
         </div>
 
         <div class="climb-console">
           <p class="eyebrow climb-route-number" id="climb-route-name">A new problem, every time</p>
           <h2 id="game-heading">Find your <em>flow.</em></h2>
-          <p class="climb-description">Follow coral to the top. Every move uses endurance; a good rest can save your climb. Pick a hold to see the cost before you commit.</p>
+          <p class="climb-description">A race against your grip. Endurance drains every second, and moves cost extra. Slopers burn fast. Find a jug, shake out, then keep moving.</p>
           <ul class="climb-legend" aria-label="Hold types">
-            <li><span class="climb-legend-mark is-jug" aria-hidden="true">J</span><span><strong>Jug</strong> A place to rest · +45 once</span></li>
-            <li><span class="climb-legend-mark is-crimp" aria-hidden="true">C</span><span><strong>Crimp</strong> Small edge · tighter grip</span></li>
-            <li><span class="climb-legend-mark is-sloper" aria-hidden="true">S</span><span><strong>Sloper</strong> Round hold · more effort</span></li>
+            <li><span class="climb-legend-mark is-jug" aria-hidden="true">J</span><span><strong>Jug · −1 grip/sec</strong> Rest for 2 seconds · +35 once</span></li>
+            <li><span class="climb-legend-mark is-crimp" aria-hidden="true">C</span><span><strong>Crimp · −2.6 grip/sec</strong> Small edge. Keep your sequence tight.</span></li>
+            <li><span class="climb-legend-mark is-sloper" aria-hidden="true">S</span><span><strong>Sloper · −3.4 grip/sec</strong> The clock bites harder here.</span></li>
           </ul>
           <div class="climb-progress" aria-label="Route progress">
             <p><span id="climb-progress-label">0% of the wall</span><span id="climb-phase">At the start</span></p>
             <div class="climb-progress-track" aria-hidden="true"><span id="climb-progress-fill"></span></div>
           </div>
-          <dl class="climb-session-stats"><div><dt>Moves</dt><dd id="climb-stat-moves">0</dd></div><div><dt>Misses</dt><dd id="climb-stat-mistakes">0</dd></div><div><dt>Rests</dt><dd id="climb-stat-rests">0 / 2</dd></div></dl>
+          <dl class="climb-session-stats"><div><dt>Time</dt><dd id="climb-stat-time" aria-live="off">0:00</dd></div><div><dt>Moves</dt><dd id="climb-stat-moves">0</dd></div><div><dt>Misses</dt><dd id="climb-stat-mistakes">0</dd></div><div><dt>Rests</dt><dd id="climb-stat-rests">0 / 2</dd></div></dl>
           <div class="climb-controls" id="climb-controls" hidden>
             <div class="climb-route-actions">
               <button class="climb-shuffle" id="climb-shuffle" type="button">Shuffle route <span aria-hidden="true">↻</span></button>
@@ -121,10 +123,11 @@
           </div>
           <div class="climb-instructions" id="climb-instructions">
             <p class="eyebrow">How to climb</p>
-            <p><strong>Keyboard</strong> · Focus the wall, use arrows to select, then <kbd>Space</kbd> or <kbd>Enter</kbd> to move. <kbd>R</kbd> rests on a jug. <kbd>Tab</kbd> leaves the wall.</p>
+            <p id="climb-keyboard-help"><strong>Keyboard</strong> · Arrows select; <kbd>Space</kbd> or <kbd>Enter</kbd> moves. <kbd>R</kbd> rests on a jug. <kbd>P</kbd> or <kbd>Esc</kbd> pauses. <kbd>Tab</kbd> leaves the wall.</p>
             <p><strong>Touch & mouse</strong> · Pick a hold, then Make the move. Rest when you reach a J hold.</p>
-            <p><strong>Read ahead</strong> · Reachable shortcuts cost extra. Mint holds and moves beyond your reach cost 8 endurance without advancing. Run out before the summit and you’re back on the mat.</p>
-            <p class="climb-tip">Thinking is free. Only moves spend your grip.</p>
+            <p class="climb-rule"><strong>Beat the burn</strong> · The countdown shows how long your grip lasts on your current hold. Shortcuts cost extra; wrong holds and missed reaches cost 12. Two jug rests recover 35 each over 2 seconds.</p>
+            <p><strong>Take a break</strong> · Pause hides the route and stops the clock. Switching tabs pauses automatically; resume when you return.</p>
+            <p class="climb-tip">Read it. Commit. Don’t hang around.</p>
           </div>
         </div>
       </section>
