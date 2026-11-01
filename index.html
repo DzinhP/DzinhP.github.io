@@ -12,6 +12,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="experience.css">
+    <link rel="stylesheet" href="basecamp.css">
     <link rel="stylesheet" href="route.css">
     <link rel="stylesheet" href="interactions.css">
     <script src="script.js" defer></script>
@@ -36,9 +37,10 @@
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu <span aria-hidden="true">+</span></button>
       <nav id="site-nav" class="site-nav" aria-label="Main navigation">
         <a href="#work">Work</a>
+        <a href="now/">Now</a>
+        <a href="explore/">Explore</a>
         <a href="writing/">Writing</a>
         <a href="#about">About</a>
-        <a class="nav-contact" href="#contact">Say hello <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
 
@@ -80,6 +82,13 @@
         </div>
         <div class="hero-foot"><span>Code, climbing & everything in between.</span><a href="#work">Take a look around <span aria-hidden="true">↓</span></a></div>
       </section>
+
+      <nav class="basecamp-links wrap" aria-label="Explore the personal side">
+        <a href="now/"><span class="basecamp-link-mark" aria-hidden="true">↗</span><span><strong>Right now</strong><small>The current chapter</small></span></a>
+        <a href="learning/"><span class="basecamp-link-mark" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none"><path d="M6 23c21 0 13-7 7-10S21 9 21 4" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 3"/><circle cx="6" cy="23" r="3" fill="currentColor"/><circle cx="13" cy="13" r="3" fill="#e67554"/><circle cx="21" cy="4" r="3" fill="currentColor"/></svg></span><span><strong>Learning map</strong><small>Follow a thought</small></span></a>
+        <a href="climb/"><span class="basecamp-link-mark" aria-hidden="true">⌁</span><span><strong>Take a climb</strong><small>A little playable break</small></span></a>
+        <a href="photos/"><span class="basecamp-link-mark" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="22" height="20" rx="2"/><circle cx="18" cy="10" r="2"/><path d="m4 21 7-8 6 7 4-4 4 5"/></svg></span><span><strong>Photo notes</strong><small>A few moments kept</small></span></a>
+      </nav>
 
       <section id="work" class="work section-pad" aria-labelledby="work-heading">
         <div class="wrap">

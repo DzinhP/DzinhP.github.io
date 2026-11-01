@@ -1,0 +1,19 @@
+{
+  "id": "replace-with-a-short-title",
+  "title": "Replace with your real story title",
+  "date": "2026-11-01",
+  "category": "climbing",
+  "paragraph": "Replace this paragraph with a real memory: where you were, what happened, and one detail you want to remember. This example is not published in the notebook.",
+  "images": [
+    {
+      "src": "images/replace-with-your-photo.webp",
+      "alt": "Replace with a useful description of the actual photo.",
+      "caption": "Optional short caption for this photo."
+    },
+    {
+      "src": "images/replace-with-another-photo.webp",
+      "alt": "Describe the second actual photo.",
+      "caption": ""
+    }
+  ]
+}

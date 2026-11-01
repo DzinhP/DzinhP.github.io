@@ -23,6 +23,18 @@ Open [localhost:4173](http://localhost:4173).
 - Edit `writing/index.html` for the field notes archive, `writing/writing.css` for its layout, and `writing/writing.js` for the category filters.
 - Edit `404.html` for the missing-page screen.
 
+## The personal side of basecamp
+
+- `/now/` is the current snapshot. Edit the four sections in `now/index.html` and update its visible and machine-readable date when the focus changes. The initial snapshot uses the supplied forecasting project, statistics book, and slab-climbing focus.
+- `/learning/` is the learning map. Holds open notes, and route completion reflects the author's recorded checkpoints. Reading or clicking never changes that progress. See [the learning guide](learning/README.md) to add notes, routes, or completed checkpoints.
+- `/climb/` is an optional six-move climbing game. Start explicitly, choose holds with arrow keys, and press Space or Enter to move. Mouse and touch players can select a hold and use the action beneath the wall. Restart and replay are available; there is no timer or stored score.
+- `/photos/` is the photo notebook. It supports Climbing, Hackathons, and Everyday entries with multiple photographs, captions, and a short story. Add real images and metadata using [the photo guide](photos/README.md). The initial `photos/notes.json` is empty until personal photos are supplied.
+- `/explore/` brings these four sections together. Homepage shortcuts and the shared navigation make them discoverable. Shared styles live in `basecamp.css`.
+
+Headers are static HTML in each page, so keep their navigation and profile links in sync when changing them. All email links use `dzinh@berkeley.edu`.
+
+The game logic can be checked with `node --test climb/climb.test.cjs`. Also preview new content on desktop and mobile, and check keyboard controls and links before publishing.
+
 ## Add a field note
 
 1. Copy `writing/a-new-basecamp/index.html` into a new folder, such as `writing/my-next-note/index.html`. Keep posts one folder below `writing/` so the relative stylesheet, navigation, and script links continue to work.

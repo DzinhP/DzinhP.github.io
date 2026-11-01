@@ -1,0 +1,90 @@
+/* A small, deliberate break at the wall. */
+.climbing-page [hidden]{display:none!important}
+.climbing-main{max-width:1180px;padding-top:66px}
+.climbing-intro{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end;margin-bottom:48px}
+.climbing-intro h1{font-size:clamp(58px,6.4vw,86px);letter-spacing:-4.5px;line-height:1.02;margin-top:24px}
+.climbing-intro h1 em{display:block;letter-spacing:-4px}
+.climbing-intro>p{font-size:14px;color:var(--muted);max-width:330px;margin-bottom:5px;line-height:1.85}
+.climb-game{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(270px,.82fr);align-items:start;gap:48px;padding:36px;background:#203b32;color:#f5f4ed;border-radius:12px;box-shadow:0 20px 50px #21392b0b}
+.climb-wall-panel{min-width:0;background:#d7dccb;border-radius:6px;overflow:hidden;box-shadow:0 10px 20px #0c241c2b;color:#33463b}
+.climb-wall-topline{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;font-family:monospace;font-size:8px;letter-spacing:1.1px;border-bottom:1px solid #adb8a5;background:#e3e6d9}
+.climb-wall-topline span:last-child{font-size:20px;line-height:1}
+.climb-stage{position:relative;aspect-ratio:4/5;isolation:isolate;background-color:#d5dccb;background-image:radial-gradient(#9cae9680 .9px,transparent 1px);background-size:24px 24px;outline:0;touch-action:manipulation}
+.climb-stage:focus-visible{box-shadow:inset 0 0 0 4px #395c4b}
+.wall-facet{position:absolute;inset:0;pointer-events:none;z-index:-1}
+.wall-facet-one{background:#b8c8b4;clip-path:polygon(55% 0,100% 0,100% 100%,83% 75%,78% 35%)}
+.wall-facet-two{background:#e5e9dc;clip-path:polygon(0 0,35% 0,23% 37%,0 57%)}
+.wall-start-label,.wall-finish-label{position:absolute;font:8px monospace;letter-spacing:1px;pointer-events:none}
+.wall-start-label{bottom:4%;left:9%}
+.wall-finish-label{top:5%;left:7%}
+.climb-trail{position:absolute;inset:0;width:100%;height:100%;color:#aa604aa3;overflow:visible;pointer-events:none}
+.climb-trail polyline{stroke-dasharray:3 7}
+.game-hold{position:absolute;top:var(--hold-y);left:var(--hold-x);transform:translate(-50%,-50%);width:48px;height:48px;padding:4px;border:0;background:none;display:grid;place-items:center;z-index:4;cursor:pointer;border-radius:50%;transition:background .18s}
+.game-hold:disabled{cursor:default;opacity:1}
+.game-hold:focus-visible{outline:2px solid #203b32;outline-offset:2px}
+.game-hold-shape{display:grid;place-items:center;width:32px;height:25px;border-radius:45% 55% 35% 38%;transform:rotate(var(--hold-angle));box-shadow:inset 0 -5px 0 #00000014,0 3px 2px #33412b2b;font-size:10px;line-height:1;font-weight:700;transition:transform .18s,box-shadow .18s}
+.game-hold-coral .game-hold-shape{background:#c96446;color:#fff7ea;border:1px solid #ab5037}
+.game-hold-mint .game-hold-shape{background:#7b977c;border:1px solid #657f66;color:#253e2d;border-radius:55% 30% 46% 35%;width:28px;height:23px}
+.game-hold:not(:disabled):hover .game-hold-shape{transform:rotate(var(--hold-angle)) scale(1.12)}
+.game-hold.is-selected{background:#fff7eeb3;outline:2px dashed #233f31;outline-offset:0}
+.game-hold.is-current .game-hold-shape{box-shadow:inset 0 -4px 0 #00000012,0 0 0 4px #fff8ed9e,0 3px 3px #33412b2b}
+.game-hold.is-visited:not(.is-current) .game-hold-shape{background:#a64d35}
+.mini-climber{position:absolute;width:76px;left:32%;top:83%;transform:translate(-50%,-6.06%);z-index:3;pointer-events:none;transition:left .48s cubic-bezier(.2,.8,.25,1),top .48s cubic-bezier(.2,.8,.25,1)}
+.mini-climber svg{display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(1px 3px 1px #23422a2e)}
+.climb-mat{position:relative;padding:21px 18px 17px;background:#83967f;border-top:6px solid #b2bca6;display:flex;justify-content:space-between;gap:15px;font-family:monospace;font-size:7px;letter-spacing:.6px;color:#213a2a;box-shadow:inset 0 2px 0 #6e8268}
+.climb-board-toolbar{padding:13px 16px 16px;background:#e8eadf}
+.climb-board-toolbar p{font-size:10px;margin-bottom:9px;color:#40523f}
+.climb-board-action{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:46px;width:100%;padding:10px 15px;border:0;border-radius:3px;background:#294a3c;color:#f6f3e8;font-size:12px}
+.climb-board-action span{font-size:21px;line-height:1}
+.climb-board-action:disabled{background:#c4cebb;color:#41553c;cursor:not-allowed}
+.climb-board-action:not(:disabled):hover{background:#3d604b}
+.climb-game .climb-board-action:focus-visible{outline-color:#203b32}
+.climb-console{padding-top:13px;min-width:0}
+.climb-route-number{color:#e3ab8f;font-size:9px}
+.climb-console h2{font-size:49px;letter-spacing:-2px;line-height:1.05;margin-top:22px}
+.climb-console h2 em{display:block;color:#eab49a}
+.climb-description{font-size:13px;line-height:1.8;color:#d2dacf;margin-top:22px;max-width:290px}
+.climb-progress{margin-top:29px}
+.climb-progress>p{display:flex;justify-content:space-between;gap:8px;font-size:10px;color:#d7e1d1}
+.climb-progress-track{height:4px;border-radius:5px;margin-top:12px;background:#456052;overflow:hidden}
+.climb-progress-track span{display:block;height:100%;background:#ecaa87;width:0;transition:width .35s}
+.climb-status{min-height:75px;font-size:13px;line-height:1.65;color:#f3e4d6;padding:20px 0 14px}
+.climb-start,.climb-move{width:100%;min-height:50px;background:#efb292;color:#25372c;border:0;border-radius:4px;display:flex;justify-content:space-between;align-items:center;padding:12px 18px;font-size:12px;font-weight:600;transition:background .18s}
+.climb-start span,.climb-move span{font-size:23px;line-height:1;font-weight:400}
+.climb-start:hover,.climb-move:not(:disabled):hover{background:#f7c4a9}
+.climb-move:disabled{background:#536d5e;color:#d1ddce;cursor:not-allowed}
+.climb-game button:focus-visible{outline:2px solid #f7d3b9;outline-offset:4px}
+.climb-game .game-hold:focus-visible{outline-color:#203b32;outline-offset:2px}
+.climb-selection{display:flex;justify-content:space-between;gap:10px;font-size:10px;border-top:1px solid #567063;padding-top:13px;color:#b6cbbd}
+.climb-selection strong{font-weight:500;color:#f6ecdf;text-align:right}
+.climb-pad{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+.climb-pad button{min-width:44px;min-height:44px;border:1px solid #5b7867;background:#2b483b;border-radius:4px;color:#f5f4ed;font-size:23px;line-height:1;transition:background .18s}
+.climb-pad button:hover{background:#3e5f4d}
+.climb-reset{display:flex;align-items:center;gap:15px;min-height:44px;margin:6px auto 0;background:none;border:0;color:#cfdbca;font-size:11px}
+.climb-reset span{font-size:17px}
+.climb-reset:hover{color:#fff7ef}
+.climb-instructions{border-top:1px solid #506959;margin-top:24px;padding-top:20px;color:#c0d0c1;font-size:11px;line-height:1.85}
+.climb-instructions .eyebrow{font-size:8px;color:#edc5aa;margin-bottom:12px}
+.climb-instructions p+p{margin-top:12px}
+.climb-instructions strong{font-weight:500;color:#f2e9db}
+.climb-instructions kbd{font:inherit;color:#f5f0e4;border:1px solid #6d8775;border-radius:3px;padding:1px 4px;white-space:nowrap}
+.climb-instructions .climb-tip{font-family:var(--serif);font-style:italic;font-size:14px;color:#d6ddcb;margin-top:18px}
+.climb-celebration{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:5}
+.climb-celebration span{position:absolute;top:7%;left:66%;opacity:0;color:#fffaf0;font-size:30px}
+.climb-celebration span:nth-child(1){--burst-x:-80px;--burst-y:-24px}
+.climb-celebration span:nth-child(2){--burst-x:70px;--burst-y:14px;color:#b65739}
+.climb-celebration span:nth-child(3){--burst-x:-90px;--burst-y:65px;font-size:21px}
+.climb-celebration span:nth-child(4){--burst-x:20px;--burst-y:94px;font-size:26px;color:#b65739}
+.climb-celebration span:nth-child(5){--burst-x:-30px;--burst-y:5px;font-size:18px}
+.climb-celebration.is-celebrating span{animation:chalk-burst 1.5s ease-out both}
+@keyframes chalk-burst{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}20%{opacity:1}85%{opacity:1}100%{opacity:0;transform:translate(var(--burst-x),var(--burst-y)) rotate(45deg) scale(.8)}}
+.climb-nojs{padding:70px 30px;font-size:14px;line-height:1.8;min-height:390px}
+.climb-nojs>span{font-size:70px;line-height:1;color:#547054;display:block;margin-bottom:24px}
+.climb-nojs p+p{margin-top:18px}
+.climb-nojs a{text-decoration:underline;text-underline-offset:3px}
+.climbing-signoff{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:36px 0 66px;font-size:12px;color:var(--muted)}
+@media(min-width:1200px){.climb-game{padding:42px;gap:54px}.climb-console{padding-top:22px}.climb-console h2{font-size:58px}.climb-description{font-size:14px}.climb-status{font-size:14px}.climb-instructions{font-size:12px}.climb-instructions .eyebrow{font-size:9px}}
+@media(max-width:900px){.climbing-main{padding-top:44px}.climb-game{gap:28px;padding:24px;grid-template-columns:minmax(0,1fr) minmax(245px,.8fr)}.climb-console h2{font-size:43px}.climb-description{font-size:12px}.climb-progress{margin-top:22px}.climb-status{font-size:12px}.climb-instructions{margin-top:20px}.climb-wall-topline{padding:12px;font-size:7px}.climb-mat{padding:18px 12px 14px;font-size:6px}.mini-climber{width:63px}}
+@media(max-width:720px){.climbing-intro{grid-template-columns:1fr;gap:24px;margin-bottom:30px}.climbing-intro h1{font-size:70px;letter-spacing:-3.5px}.climbing-intro h1 em{display:inline;letter-spacing:-3px}.climbing-intro>p{max-width:410px;font-size:13px}.climb-game{grid-template-columns:1fr;gap:28px;padding:24px;max-width:540px;margin-inline:auto}.climb-console{padding:0 4px 4px}.climb-console h2{font-size:43px;margin-top:16px}.climb-console h2 em{display:inline}.climb-description{max-width:none;font-size:13px;margin-top:16px}.climb-status{font-size:13px;min-height:66px}.climb-instructions{font-size:12px}.climb-mat{font-size:7px}.mini-climber{width:70px}.climbing-signoff{padding-bottom:44px}}
+@media(max-width:420px){.climbing-main{padding-top:35px}.climbing-intro h1{font-size:57px;letter-spacing:-3px}.climbing-intro h1 em{display:block}.climb-game{padding:12px;border-radius:8px;gap:24px}.climb-console{padding:0 6px 10px}.climb-console h2{font-size:39px}.climb-wall-topline{font-size:6px;letter-spacing:.8px}.climb-mat{font-size:6px;letter-spacing:.3px}.climb-stage{aspect-ratio:4/5.5}.mini-climber{width:58px}.game-hold{width:44px;height:44px}.game-hold-shape{width:29px;height:23px}.game-hold-mint .game-hold-shape{width:25px;height:21px}.wall-finish-label,.wall-start-label{font-size:7px;letter-spacing:.5px}.climbing-signoff{display:block;font-size:11px}.climbing-signoff .text-link{margin-top:15px}}
+@media(prefers-reduced-motion:reduce){.climb-celebration.is-celebrating span{opacity:1;transform:translate(var(--burst-x),var(--burst-y));animation:none}.mini-climber{transition:none}}

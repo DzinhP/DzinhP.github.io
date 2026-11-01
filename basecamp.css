@@ -1,0 +1,39 @@
+/* Shared wayfinding for the personal side of basecamp. */
+.basecamp-page [hidden]{display:none!important}
+.site-nav a[aria-current]{color:#53694e;text-decoration:underline;text-underline-offset:7px}
+.basecamp-main{padding-block:64px 80px;min-height:calc(100vh - 210px)}
+.basecamp-intro{padding-bottom:50px;border-bottom:1px solid var(--line)}
+.basecamp-intro h1{font-size:clamp(62px,7vw,96px);margin-top:22px;letter-spacing:-4px;line-height:1.04}
+.basecamp-intro h1 em{letter-spacing:-3px}
+.basecamp-intro>p:last-child{max-width:590px;margin-top:25px;font-size:16px;line-height:1.8;color:var(--muted)}
+.basecamp-breadcrumb{display:inline-flex;align-items:center;gap:12px;min-height:44px;font-size:12px;color:var(--muted);margin-bottom:28px}
+.basecamp-breadcrumb:hover{color:#9b452e}
+.basecamp-links{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:5px;overflow:hidden;margin-top:22px;margin-bottom:36px}
+.basecamp-links>a{display:flex;align-items:center;gap:16px;padding:23px 21px;min-width:0;border-right:1px solid var(--line);transition:background .2s}
+.basecamp-links>a:last-child{border:0}
+.basecamp-links>a:hover{background:#e6ebdf}
+.basecamp-links>a:focus-visible{outline-offset:-4px}
+.basecamp-link-mark{display:grid;place-items:center;width:34px;height:38px;flex-shrink:0;color:#53694e;font-size:25px;font-family:var(--serif)}
+.basecamp-link-mark svg{width:26px;height:26px}
+.basecamp-links strong{display:block;font-weight:500;font-size:15px;line-height:1.3}
+.basecamp-links small{display:block;font-size:11px;color:var(--muted);margin-top:5px}
+.explore-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding-block:36px}
+.explore-card{position:relative;display:flex;flex-direction:column;min-height:330px;padding:32px;border:1px solid var(--line);border-radius:5px;overflow:hidden;transition:background .2s}
+.explore-card:hover{background:#ecefe5}
+.explore-card .eyebrow{font-size:9px;color:#66775d}
+.explore-card h2{font-size:41px;letter-spacing:-1.8px;margin-top:auto;padding-top:60px}
+.explore-card p:not(.eyebrow){font-size:14px;color:var(--muted);max-width:360px;margin-top:19px;line-height:1.8}
+.explore-card .card-arrow{position:absolute;right:28px;top:27px;display:grid;place-items:center;width:43px;height:43px;border:1px solid #aebaa6;border-radius:50%;font-size:26px;transition:transform .2s}
+.explore-card:hover .card-arrow{transform:translate(3px,-3px)}
+.explore-card.is-forest{background:#21372f;color:var(--paper);border-color:#21372f}
+.explore-card.is-forest .eyebrow{color:#d4b695}
+.explore-card.is-forest p:not(.eyebrow){color:#ced7ce}
+.explore-card.is-forest:hover{background:#2d473b}
+.explore-card.is-forest:focus-visible{outline-color:var(--accent)}
+.explore-signoff{display:flex;justify-content:space-between;gap:24px;align-items:center;padding-top:28px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.explore-signoff p{font-family:var(--serif);font-style:italic;font-size:17px}
+.writing-extras{display:flex;flex-wrap:wrap;gap:12px 25px;align-items:center;margin-top:24px}
+.writing-extras a{font-size:12px;display:inline-flex;align-items:center;gap:15px;min-height:44px;border-bottom:1px solid var(--line)}
+.writing-extras a:hover{color:#9b452e;border-color:currentColor}
+@media(max-width:1000px){.basecamp-links{grid-template-columns:1fr 1fr}.basecamp-links>a:nth-child(2){border-right:0}.basecamp-links>a:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media(max-width:600px){.basecamp-main{padding-block:30px 50px}.basecamp-intro{padding-bottom:33px}.basecamp-intro h1{font-size:clamp(54px,14vw,74px);letter-spacing:-3px}.basecamp-intro h1 em{letter-spacing:-2.5px}.basecamp-intro>p:last-child{font-size:14px;margin-top:21px}.basecamp-breadcrumb{margin-bottom:20px}.basecamp-links{margin-block:10px 28px}.basecamp-links>a{padding:19px 12px;gap:8px}.basecamp-link-mark{width:27px;font-size:23px}.basecamp-links strong{font-size:13px}.basecamp-links small{font-size:10px}.explore-grid{grid-template-columns:1fr;padding-block:25px;gap:16px}.explore-card{min-height:280px;padding:26px}.explore-card h2{font-size:35px;padding-top:52px}.explore-card .card-arrow{top:22px;right:22px}.explore-signoff{align-items:start;flex-direction:column;gap:14px}}
